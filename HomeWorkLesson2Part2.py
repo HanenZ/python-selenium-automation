@@ -18,10 +18,10 @@ driver.maximize_window()
 driver.get('https://www.target.com/')
 
 #  Click SignIn button
-driver.find_element(By.XPATH, "//span[@class='styles__LinkText-sc-1e1g60c-3 dZfgoT h-margin-r-x3']").click()
+driver.find_element(By.XPATH, "//span[text()='Sign in']").click()
 
 #  Click SignIn from side navigation
-driver.find_element(By.XPATH, "//span[@class='styles__ListItemText-sc-diphzn-1 jaMNVl']").click()
+driver.find_element(By.XPATH, "//a[@data-test='accountNav-signIn']//span").click()
 sleep(5)
 
 # Verify SignIn page opened
