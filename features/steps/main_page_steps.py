@@ -1,30 +1,32 @@
 from selenium.webdriver.common.by import By
 from behave import given, when, then
-from time import sleep
+# from time import sleep
 
 SEARCH_FIELD = (By.ID, 'search')
 SEARCH_ICON = (By.XPATH, "//button[@data-test='@web/Search/SearchButton']")
-CART_ICON = (By.CSS_SELECTOR, "[data-test='@web/CartLink']")
+# CART_ICON = (By.CSS_SELECTOR, "[data-test='@web/CartLink']")
 HEADER = (By.CSS_SELECTOR, "[class*='UtilityHeaderWrapper']")
 HEADER_LINKS = (By.CSS_SELECTOR, "[data-test*='@web/GlobalHeader/UtilityHeader']")
 
 
 @given('Open Target main page')
 def open_target_main(context):
-    context.driver.get('https://www.target.com/')
+    # context.driver.get('https://www.target.com/')
+    context.app.main_page.open_main()
 
 
 @when('Search for {product}')
 def search_product(context, product):
-    context.driver.find_element(*SEARCH_FIELD).send_keys(product)
-    context.driver.find_element(*SEARCH_ICON).click()
-    sleep(6)
+    # context.driver.find_element(*SEARCH_FIELD).send_keys(product)
+    # context.driver.find_element(*SEARCH_ICON).click()
+    # sleep(6)
+    context.app.header.search_product()
 
 
 @when('Click on Cart icon')
 def click_cart(context):
-    context.driver.find_element(*CART_ICON).click()
-
+    # context.driver.find_element(*CART_ICON).click()
+    context.app.header.click_cart_icon()
 
 @then('Verify header in shown')
 def verify_header(context):

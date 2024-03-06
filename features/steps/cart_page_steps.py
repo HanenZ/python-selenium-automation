@@ -6,11 +6,10 @@ CART_SUMMARY = (By.CSS_SELECTOR, "[class*='CartSummarySpan']")
 CART_ITEM_TITLE = (By.CSS_SELECTOR, "[data-test='cartItem-title']")
 
 
-@when('Open cart page')
-def open_cart(context):
-    context.driver.get('https://www.target.com/cart')
-
-
+@when('Open target main page')
+def open_target_cart(context):
+    # context.driver.get('https://www.target.com/cart')
+    context.app.main_page.open_main()
 @then('Verify cart has correct product')
 def verify_product_name(context):
     actual_name = context.driver.find_element(*CART_ITEM_TITLE).text
@@ -35,5 +34,6 @@ def verify_cart_items(context, amount):
 
 @then("Verify 'Your cart is empty' message is shown")
 def verify_cart_empty_message(context):
-    actual_text = context.driver.find_element(*CART_HEADER).text
-    assert 'Your cart is empty' == actual_text, f"Expected 'Your cart is empty' but got {actual_text}"
+    # actual_text = context.driver.find_element(*CART_HEADER).text
+    # assert 'Your cart is empty' == actual_text, f"Expected 'Your cart is empty' but got {actual_text}"
+    context.app.cart_page.verify_cart_empty_message()
